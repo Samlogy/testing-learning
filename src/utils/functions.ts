@@ -7,7 +7,7 @@ export function devide(a: number, b: number) {
   return a / b;
 }
 
-export async function fetchAPI(url: string, options = {}) {
+export async function fetchAsyc(url: string, options = {}) {
   try {
     const res = await fetch(url, options);
     const data = await res.json();
@@ -15,4 +15,11 @@ export async function fetchAPI(url: string, options = {}) {
   } catch (err) {
     console.log(err);
   }
+}
+
+export function fetchPromise(url: string, options = {}) {
+  return fetch(url, options)
+    .then((res) => res.json())
+    .then((json) => json)
+    .catch((err) => console.log(err));
 }

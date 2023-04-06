@@ -1,10 +1,18 @@
 import "./App.css";
 import Counter from "./components/Counter";
+import Login from "./components/Login";
+import { fetchPromise } from "./utils/functions";
 
 export default function App() {
+  // console.log(
+  //   fetchPromise("https://jsonplaceholder.typicode.com/todos/1").then((res) =>
+  //     res.json()
+  //   ).
+  // );
   return (
     <div className="App">
-      <Counter />
+      {/* <Counter /> */}
+      <Login />
     </div>
   );
 }

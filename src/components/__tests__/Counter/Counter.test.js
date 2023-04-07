@@ -2,17 +2,6 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Counter from "../../Counter";
 
 describe("Counter cpt", () => {
-  // const countEl = screen.getByTestId("count");
-  // const btnDec = screen.getByRole("button", {
-  //   name: "-",
-  // });
-  // const btnInc = screen.getByRole("button", {
-  //   name: "+",
-  // });
-  // const btnReset = screen.getByRole("button", {
-  //   name: /reset/i,
-  // });
-
   it("counter rendered / int value 0", () => {
     render(<Counter />);
     const countEl = screen.getByTestId("count");

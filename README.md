@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+# Testing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+there're multiple testing strategies
 
-## Available Scripts
+# why do we test ?
 
-In the project directory, you can run:
+- detect beugs faster
+- check if it works as expected
+- automate the test for futur uses
+- check if it still works fine, after changes made
 
-### `yarn start`
+# what to test ?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+anything in an app can be tested, but we rather prioritize what we test
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- high value features
+- edge cases in high value features
+- thing that are easy to break
+- react components testing:
+  - user interactions
+  - conditional rendering
+  - utils / hooks
 
-### `yarn test`
+pros:
+it helps during the developement process, by speeding up functionality, debugging, ...
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Unit
 
-### `yarn build`
+test individual units of code (functions, methods, components, classes, ...).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## integration
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+test a set (function, method, components, ...), tell us how well they work together.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## End-to-end
 
-### `yarn eject`
+test all the app, simulating the end user
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Techno
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- react-testing: elect dom element, trigger events, ...
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- jest: uns tests, determine if a test succeed or fail
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+mocks:
+are used in unit testing, when the unit test has external dependencies.
+the purpose of a mocking is to isolate & focus on the code being tested, and not the state / behavior of the external dependencies.
 
-## Learn More
+// run al tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Getting started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+yarn test
+```
+
+```
+yarn test -- test/TestWithMockData.test.tsx --verbose
+```
+
+// run specific test file

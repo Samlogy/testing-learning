@@ -9,18 +9,6 @@ describe("Counter cpt", () => {
     expect(countEl).toHaveTextContent("0");
   });
 
-  it("click -", () => {
-    render(<Counter />);
-    const countEl = screen.getByTestId("count");
-    const btnDec = screen.getByRole("button", {
-      name: "-",
-    });
-
-    expect(btnDec).toBeInTheDocument(); // rendered
-    fireEvent.click(btnDec); // clicked
-    expect(countEl).toHaveTextContent("-1"); // decrement
-  });
-
   it("click +", () => {
     render(<Counter />);
     const countEl = screen.getByTestId("count");
@@ -31,6 +19,18 @@ describe("Counter cpt", () => {
     expect(btnInc).toBeInTheDocument(); // rendered
     fireEvent.click(btnInc); // clicked
     expect(countEl).toHaveTextContent("1"); // decrement
+  });
+
+  it("click -", () => {
+    render(<Counter />);
+    const countEl = screen.getByTestId("count");
+    const btnDec = screen.getByRole("button", {
+      name: "-",
+    });
+
+    expect(btnDec).toBeInTheDocument(); // rendered
+    fireEvent.click(btnDec); // clicked
+    expect(countEl).toHaveTextContent("0"); // decrement
   });
 
   it("click reset", () => {

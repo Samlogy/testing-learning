@@ -24,6 +24,7 @@ export default function Login() {
 
   return (
     <div className="container">
+      <h2> Login </h2>
       <span className="user" data-testid="user-name">
         {user?.name}
       </span>

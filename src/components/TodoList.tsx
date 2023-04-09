@@ -1,24 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function TodoItem({ todo, onDelete, onToggle }: any) {
-  return (
-    <li>
-      <label>
-        <input type="checkbox" checked={todo.completed} onChange={onToggle} />
-        <span
-          style={{
-            textDecoration: todo.completed ? "line-through" : "none",
-          }}
-        >
-          {todo.text}
-        </span>
-      </label>
-      <button onClick={onDelete}>Delete</button>
-    </li>
-  );
-}
-
-function TodoList() {
+export default function TodoList() {
   const [todos, setTodos] = useState<any>([]);
   const [text, setText] = useState("");
 
@@ -51,24 +33,35 @@ function TodoList() {
       >
         <input
           type="text"
-          name="text"
+          placeholder="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit">Add</button>
+        <button type="submit" disabled={!text}>
+          Add
+        </button>
       </form>
       <ul>
         {todos.map((todo: any) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onDelete={() => deleteTodo(todo.id)}
-            onToggle={() => toggleTodo(todo.id)}
-          />
+          <li key={todo.id} data-testid="todo-item">
+            <label>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => toggleTodo(todo.id)}
+              />
+              <span
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                }}
+              >
+                ){todo.text}
+              </span>
+            </label>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </li>
         ))}
       </ul>
     </div>
   );
 }
-
-export default TodoList;

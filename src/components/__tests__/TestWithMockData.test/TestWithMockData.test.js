@@ -31,20 +31,24 @@ const mockData = [
 //   expect(screen.getByText(/fletcher/i)).toBeInTheDocument();
 // });
 
-test("Ordered list renders", () => {
-  render(<TestWithMockData data={mockData} displayUnorderedList={false} />);
-  expect(screen.getByText(/McVanamy/i)).toBeInTheDocument();
+describe("Test with mock data", () => {
+  it("Ordered list renders", () => {
+    render(<TestWithMockData data={mockData} displayUnorderedList={false} />);
+    expect(screen.getByText(/McVanamy/i)).toBeInTheDocument();
+  });
+
+  it("Email link click handler called", async () => {
+    const mockHandleClick = jest.fn();
+    render(
+      <TestWithMockData
+        data={mockData}
+        displayUnorderedList={true}
+        handleClick={mockHandleClick}
+      />
+    );
+    await userEvent.click(screen.getByText(/mmcvanamy0@e-recht24.de/i));
+    expect(mockHandleClick).toHaveBeenCalled();
+  });
 });
 
-test("Email link click handler called", async () => {
-  const mockHandleClick = jest.fn();
-  render(
-    <TestWithMockData
-      data={mockData}
-      displayUnorderedList={true}
-      handleClick={mockHandleClick}
-    />
-  );
-  await userEvent.click(screen.getByText(/mmcvanamy0@e-recht24.de/i));
-  expect(mockHandleClick).toHaveBeenCalled();
-});
+
